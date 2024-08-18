@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms'
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CommonModule, TestComponent, UserAuthModule, FormsModule],
-  // templateUrl: './app.component.html',
+  templateUrl: './app.component.html',
   // template: `
   // <h1>Lifecycle Example</h1>
   // <p *ngIf = "initialized">Component Initialized</p>
@@ -34,20 +34,33 @@ import { FormsModule } from '@angular/forms'
 //   <button (click)="onButtonClick()">Click me</button>
 //   <input (keyup)="onKeyUp($event)">
 //   `,
-  template: `
-  <input [(ngModel)]="name" placeholder="Enter your name">
-  <p>Welcome, {{name}}!</p>
-  `,
+// //ngModel
+  // template: `
+  // <input [(ngModel)]="name" placeholder="Enter your name">
+  // <p>Welcome, {{name}}!</p>
+  // `,
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   title = 'myAngularProject';
 
+// Directives
+// ngIf
+  showMessage: boolean = false;
+
+  toggleMessage(){
+    this.showMessage = !this.showMessage;
+  }
+
+// ngStyle
+  fontSize: number = 16;
+  fontColor: string = 'blue';
+
+
+
+
+// ngModel example.
   name = '';
-
-
-
-
 
 // Event Binding.
   count = 1;

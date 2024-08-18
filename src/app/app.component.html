@@ -327,12 +327,27 @@
 <h1>Hello, This is Sanjeev Kumar V</h1>
 <app-test></app-test>
 
+
 <!-- One-way data binding -->
 <p>Project status is:{{status}}</p>
 
 <!-- Two-way data binding -->
 <span>Enter the Country: </span>
 <input type="text" [(ngModel)]="country" (change)="displayCountry()"/>
+<br><br>
+<!-- Directives -->
+<!-- ngIf -->
+ <p *ngIf = 'showMessage'>This message is rendered conditionally.</p>
+ <button (click)= 'toggleMessage()'>Change message</button>
+
+<!-- ngStyle -->
+ <!-- <p [ngStyle]="{'color': 'red', 'font-style': 'italic', }"></p> -->
+  <p [ngStyle]="{'font-size.px' : fontSize, 'color' : fontColor}">This text is styled dynamically</p>
+  <label for="color">Font color: </label>
+  <input id="color" type="text" [(ngModel)] = "fontColor"><br><br>
+  <label for="size">Font size: </label>
+  <input type="text" [(ngModel)] = "fontSize">
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
