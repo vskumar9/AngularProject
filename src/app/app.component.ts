@@ -3,11 +3,12 @@ import { Component, Input, OnInit, Output, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TestComponent } from "./test/test.component";
 import { UserAuthModule } from './user-auth/user-auth.module';
-import { FormsModule } from '@angular/forms'
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, TestComponent, UserAuthModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, TestComponent, 
+    UserAuthModule, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   // template: `
   // <h1>Lifecycle Example</h1>
@@ -43,21 +44,42 @@ import { FormsModule } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   title = 'myAngularProject';
+  myForm: FormGroup = new FormGroup({});
+
+  constructor(private formBuilder: FormBuilder){}
+  ngOnInit(): void {
+    this.myForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required, Validators.email]
+    })
+  }
+
+// Forms
+  submitForm(){
+    console.log('From submitted.')
+  }
+
+
+
+
+
+
+
+
+// Pipes
+  value: string = 'Hello Angular!';
+  currentDate: Date = new Date();
+  amount: number = 99.99;
 
 // Directives
 // ngIf
   showMessage: boolean = false;
-
   toggleMessage(){
     this.showMessage = !this.showMessage;
   }
-
 // ngStyle
   fontSize: number = 16;
   fontColor: string = 'blue';
-
-
-
 
 // ngModel example.
   name = '';
@@ -105,12 +127,12 @@ getInitialValue(){
   @Output()
   params!: String;
   initialized: boolean = false;
-  constructor(){
-    console.log('Constructor called.')
-  }
+  // constructor(){
+  //   console.log('Constructor called.')
+  // }
 
-  ngOnInit(): void{
-    this.initialized = true;
-    console.log(this.initialized);
-  }
+  // ngOnInit(): void{
+  //   this.initialized = true;
+  //   console.log(this.initialized);
+  // }
 }
