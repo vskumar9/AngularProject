@@ -327,6 +327,13 @@
 <h1>Hello, This is Sanjeev Kumar V</h1>
 <app-test></app-test>
 
+<!-- One-way data binding -->
+<p>Project status is:{{status}}</p>
+
+<!-- Two-way data binding -->
+<span>Enter the Country: </span>
+<input type="text" [(ngModel)]="country" (change)="displayCountry()"/>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
